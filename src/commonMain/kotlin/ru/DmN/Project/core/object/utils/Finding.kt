@@ -1,5 +1,6 @@
 package ru.DmN.Project.core.`object`.utils
 
+import ru.DmN.Project.core.`object`.FMType
 import ru.DmN.Project.core.`object`.ObjType
 import ru.DmN.Project.core.`object`.api.IES
 import ru.DmN.Project.core.`object`.api.IFMS
@@ -23,11 +24,11 @@ fun findWithType(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IOb
         ObjType.NULL        -> null
         ObjType.VAL         -> null
         ObjType.VAR         -> null
-        ObjType.REFERENCE   -> findWithType((obj as IVObject).value as IObject, name)
         ObjType.METHOD      -> null
-        ObjType.INTERFACE   -> findEFM(obj, name)
-        ObjType.CLASS       -> findEFM(obj, name)
-        ObjType.OBJECT      -> findEFM(obj, name)
+        ObjType.INTERFACE   -> findEFM(obj, name, type)
+        ObjType.CLASS       -> findEFM(obj, name, type)
+        ObjType.OBJECT      -> findEFM(obj, name, type)
+        ObjType.REFERENCE   -> findWithType((obj as IVObject).value as IObject, name, type)
         ObjType.PACKAGE     -> {
             for (e in cast<ArrayList<IObject>>((obj as VObject).value))
                 if (e.name == name)
@@ -44,12 +45,6 @@ fun findEFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject?
         result = findE(obj, name, type)
 
     return result
-}
-
-enum class FMType {
-    FIELD,
-    METHOD,
-    UNKNOWN
 }
 
 fun findFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
