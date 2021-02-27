@@ -1,8 +1,8 @@
 package ru.DmN.Project.core.`object`.api
 
 /**
- * I Extends Storage
+ * Extends Provider
  */
-interface IES {
+interface IEP {
     val extends: ArrayList<IObject>
 }

@@ -7,6 +7,6 @@
 | VAR       | IVObject               | Требуется (value - Any?)           |
 | REFERENCE | IVObject               | Не требуется                       |
 | METHOD    | IVObject               | Не требуется                       |
-| INTERFACE | IObject ~ IFMS ~ IES   | Желательно (везде)                 |
-| CLASS     | IObject ~ IFMS ~ IES   | Желательно (везде)                 |
+| INTERFACE | IObject ~ IFMP ~ IEP   | Желательно (везде)                 |
+| CLASS     | IObject ~ IFMP ~ IEP   | Желательно (везде)                 |
 | PACKAGE   | IVObject               | Требуется (value - List<IObject>)  |

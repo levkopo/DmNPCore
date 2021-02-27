@@ -2,8 +2,8 @@ package ru.DmN.Project.core.`object`.utils
 
 import ru.DmN.Project.core.`object`.FMType
 import ru.DmN.Project.core.`object`.ObjType
-import ru.DmN.Project.core.`object`.api.IES
-import ru.DmN.Project.core.`object`.api.IFMS
+import ru.DmN.Project.core.`object`.api.IEP
+import ru.DmN.Project.core.`object`.api.IFMP
 import ru.DmN.Project.core.`object`.api.IObject
 import ru.DmN.Project.core.`object`.api.IVObject
 import ru.DmN.Project.core.`object`.impl.VObject
@@ -41,10 +41,10 @@ fun findWithType(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IOb
 fun findEFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
     var result: IObject? = null
 
-    if (obj is IFMS)
+    if (obj is IFMP)
         result = findFM(obj, name, type)
 
-    if (result == null && obj is IES)
+    if (result == null && obj is IEP)
         result = findE(obj, name, type)
 
     return result
@@ -52,7 +52,7 @@ fun findEFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject?
 
 fun findFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
     if (type == FMType.UNKNOWN || type == FMType.FIELD) {
-        val arr = (obj as IFMS).fields
+        val arr = (obj as IFMP).fields
         for (i in 0 until arr.size) {
             if (arr[i].name == name)
                 return arr[i]
@@ -60,7 +60,7 @@ fun findFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? 
     }
 
     if (type == FMType.UNKNOWN || type == FMType.METHOD) {
-        val arr = (obj as IFMS).methods
+        val arr = (obj as IFMP).methods
         for (i in 0 until arr.size) {
             if (arr[i].name == name)
                 return arr[i]
@@ -72,7 +72,7 @@ fun findFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? 
 }
 
 fun findE(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
-    for (e in (obj as IES).extends) {
+    for (e in (obj as IEP).extends) {
         val result = findEFM(e, name, type)
 
         if (result != null)
