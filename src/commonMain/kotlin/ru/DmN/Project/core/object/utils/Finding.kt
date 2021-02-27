@@ -39,40 +39,44 @@ fun findWithType(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IOb
 }
 
 fun findEFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
-    var result = findFM(obj, name, type)
+    var result: IObject? = null
 
-    if (result == null)
+    if (obj is IFMS)
+        result = findFM(obj, name, type)
+
+    if (result == null && obj is IES)
         result = findE(obj, name, type)
 
     return result
 }
 
 fun findFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
-    if (obj is IFMS) {
-        if (type == FMType.UNKNOWN || type == FMType.FIELD)
-            for (e in obj.fields) {
-                if (e.name == name)
-                    return e
-            }
-
-        if (type == FMType.UNKNOWN || type == FMType.METHOD)
-            for (e in obj.methods) {
-                if (e.name == name)
-                    return e
-            }
+    if (type == FMType.UNKNOWN || type == FMType.FIELD) {
+        val arr = (obj as IFMS).fields
+        for (i in 0 until arr.size) {
+            if (arr[i].name == name)
+                return arr[i]
+        }
     }
+
+    if (type == FMType.UNKNOWN || type == FMType.METHOD) {
+        val arr = (obj as IFMS).methods
+        for (i in 0 until arr.size) {
+            if (arr[i].name == name)
+                return arr[i]
+        }
+    }
+
 
     return null
 }
 
 fun findE(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
-    if (obj is IES) {
-        for (e in obj.extends) {
-            val result = findEFM(e, name, type)
+    for (e in (obj as IES).extends) {
+        val result = findEFM(e, name, type)
 
-            if (result != null)
-                return result
-        }
+        if (result != null)
+            return result
     }
 
     return null
