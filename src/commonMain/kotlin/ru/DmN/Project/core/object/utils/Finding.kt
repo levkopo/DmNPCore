@@ -42,7 +42,7 @@ fun findEFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject?
     var result: IObject? = null
 
     if (obj is IFMP)
-        result = findFM(obj, name, type)
+    result = findFM(obj, name, type)
 
     if (result == null && obj is IEP)
         result = findE(obj, name, type)
@@ -52,18 +52,26 @@ fun findEFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject?
 
 fun findFM(obj: IObject, name: String, type: FMType = FMType.UNKNOWN): IObject? {
     if (type == FMType.UNKNOWN || type == FMType.FIELD) {
-        val arr = (obj as IFMP).fields
-        for (i in 0 until arr.size) {
-            if (arr[i].name == name)
-                return arr[i]
+        val f = (obj as IFMP).fields
+
+        if (f.autoFinding)
+            return obj.fields[name]
+
+        for (i in 0 until f.size) {
+            if (f[i].name == name)
+                return f[i]
         }
     }
 
     if (type == FMType.UNKNOWN || type == FMType.METHOD) {
-        val arr = (obj as IFMP).methods
-        for (i in 0 until arr.size) {
-            if (arr[i].name == name)
-                return arr[i]
+        val m = (obj as IFMP).methods
+
+        if (m.autoFinding)
+            return m[name]
+
+        for (i in 0 until m.size) {
+            if (m[i].name == name)
+                return m[i]
         }
     }
 
