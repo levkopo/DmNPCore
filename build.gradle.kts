@@ -18,6 +18,7 @@ kotlin {
             useJUnit()
         }
     }
+
     js(LEGACY) {
         browser {
             testTask {
@@ -28,6 +29,7 @@ kotlin {
             }
         }
     }
+
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
     val nativeTarget = when {
@@ -37,7 +39,6 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -50,6 +51,7 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
+                implementation("commons-io:commons-io:2.4")
             }
         }
         val jsMain by getting
