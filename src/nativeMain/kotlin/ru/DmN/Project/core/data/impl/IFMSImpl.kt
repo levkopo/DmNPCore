@@ -6,6 +6,7 @@ import ru.DmN.Project.core.data.api.IFMS
 
 actual class IFMSImpl<T : IObject> : IFMS<T> {
     private val instance = ArrayList<T>()
+
     // Fields impl
     override val size: Int
         get() = instance.size
@@ -17,4 +18,13 @@ actual class IFMSImpl<T : IObject> : IFMS<T> {
     // Setting impl
     override fun set(obj: T, name: String) { instance[instance.indexOfIO(name)] = obj }
     override fun set(obj: T, index: Int) { instance[index] = obj }
+    // Removing impl
+    override fun remove(name: String): T? {
+        val i =  instance.indexOfIO(name)
+
+        return if (i > -1)
+            instance.removeAt(i)
+        else null
+    }
+    override fun removeAt(index: Int): T = instance.removeAt(index)
 }

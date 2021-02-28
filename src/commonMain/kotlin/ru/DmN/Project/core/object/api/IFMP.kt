@@ -5,7 +5,7 @@ import ru.DmN.Project.core.data.api.IFMS
 /**
  * Fields Methods Provider
  */
-interface IFMP {
+interface IFMP : IDP {
     val fields: IFMS<IObject>
     val methods: IFMS<IVObject>
 }

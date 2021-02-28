@@ -1,11 +1,11 @@
 package ru.DmN.Project.core.data.impl
 
-import ru.DmN.Project.core.`object`.api.IObject
+import ru.DmN.Project.core.`object`.api.IDPO
 import ru.DmN.Project.core.`object`.utils.cast
 import ru.DmN.Project.core.`object`.utils.indexOfIO
-import ru.DmN.Project.core.data.api.IFMS
+import ru.DmN.Project.core.data.api.IES
 
-actual class IFMSImpl<T : IObject> : ArrayList<IObject>(), IFMS<T> {
+actual class IESImpl<T : IDPO> : ArrayList<IDPO>(), IES<T> {
     // Fields impl
     override val size: Int
         get() = super.size
@@ -16,14 +16,14 @@ actual class IFMSImpl<T : IObject> : ArrayList<IObject>(), IFMS<T> {
     override fun get(index: Int): T = cast(super.get(index))
     // Setting impl
     override fun set(obj: T, name: String) { this[this.indexOfIO(name)] = obj }
-    override fun set(obj: T, index: Int) { super.set(index, obj) }
+    override fun set(obj: T, index: Int) { this[index] = obj }
     // Removing impl
     override fun remove(name: String): T? {
         val i = this.indexOfIO(name)
 
         return if (i > -1)
-            cast(this.removeAt(i))
+            cast(super.removeAt(i))
         else null
     }
-    override fun removeAt(index: Int): T = cast(this.removeAt(index))
+    override fun removeAt(index: Int): T = cast(super.removeAt(index))
 }

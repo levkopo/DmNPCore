@@ -5,13 +5,16 @@ import ru.DmN.Project.core.`object`.ObjType
 import ru.DmN.Project.core.`object`.api.IFMP
 import ru.DmN.Project.core.`object`.api.IObject
 import ru.DmN.Project.core.`object`.api.IVObject
+import ru.DmN.Project.core.`object`.impl.AObject
 import ru.DmN.Project.core.`object`.impl.Object
 import ru.DmN.Project.core.`object`.impl.VObject
+import ru.DmN.Project.core.`object`.utils.find
 import ru.DmN.Project.core.data.api.IFMS
+import ru.DmN.Project.core.data.impl.IESImpl
 import ru.DmN.Project.core.data.impl.IFMSImpl
 import kotlin.test.assertEquals
 
-class ObjectTest {
+class FindTest {
     @Test
     fun find1() {
         for (counter in 0 until 10000) {
@@ -32,7 +35,23 @@ class ObjectTest {
                 o1.fields.add(Object("O${i + 1023}", ObjType.NULL))
             }
 
-            assertEquals(ru.DmN.Project.core.`object`.utils.find(o1, "TestObject2"), o2)
+            assertEquals(find(o1, "TestObject2"), o2)
+        }
+    }
+
+    @Test
+    fun find2() {
+        for (counter in 0 until 100000) {
+            val o1 = AObject(IESImpl(), IFMSImpl(), IFMSImpl(), "Object_1", ObjType.OBJECT)
+            val o2 = AObject(IESImpl(), IFMSImpl(), IFMSImpl(), "Object_2", ObjType.OBJECT)
+
+            o1.fields.add(VObject("i", ObjType.VAL, 12))
+            o2.fields.add(VObject("j", ObjType.VAL, 21))
+
+            o2.extends.add(o1)
+
+            assertEquals((find(o2, "i") as IVObject).value, 12)
+            assertEquals((find(o2, "j") as IVObject).value, 21)
         }
     }
 }

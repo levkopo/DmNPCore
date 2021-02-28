@@ -1,14 +1,12 @@
 package ru.DmN.Project.core.data.api
 
-import ru.DmN.Project.core.`object`.api.IObject
+import ru.DmN.Project.core.`object`.api.IDPO
 
 /**
- * Field Method Storage
+ * Extends Storage
  */
-interface IFMS<T : IObject> {
+interface IES<T : IDPO> : Iterable<T> {
     // Fields
-    val autoFinding: Boolean
-        get() = false
     val size: Int
     // Adding
     fun add(obj: T)
