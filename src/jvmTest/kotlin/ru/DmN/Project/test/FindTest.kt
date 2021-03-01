@@ -1,17 +1,17 @@
 package ru.DmN.Project.test
 
 import org.junit.Test
-import ru.DmN.Project.core.`object`.ObjType
-import ru.DmN.Project.core.`object`.api.IFMP
-import ru.DmN.Project.core.`object`.api.IObject
-import ru.DmN.Project.core.`object`.api.IVObject
-import ru.DmN.Project.core.`object`.impl.AObject
-import ru.DmN.Project.core.`object`.impl.Object
-import ru.DmN.Project.core.`object`.impl.VObject
-import ru.DmN.Project.core.`object`.utils.find
-import ru.DmN.Project.core.data.api.`object`.IFMS
-import ru.DmN.Project.core.data.impl.`object`.IESImpl
-import ru.DmN.Project.core.data.impl.`object`.IFMSImpl
+import ru.DmN.Project.core.Object.ObjType
+import ru.DmN.Project.core.Object.api.IFMP
+import ru.DmN.Project.core.Object.api.IObject
+import ru.DmN.Project.core.Object.api.IVObject
+import ru.DmN.Project.core.Object.impl.AObject
+import ru.DmN.Project.core.Object.impl.Object
+import ru.DmN.Project.core.Object.impl.VObject
+import ru.DmN.Project.core.Object.utils.find
+import ru.DmN.Project.core.data.api.Object.IFMS
+import ru.DmN.Project.core.data.impl.Object.IESImpl
+import ru.DmN.Project.core.data.impl.Object.IFMSImpl
 import kotlin.test.assertEquals
 
 class FindTest {
