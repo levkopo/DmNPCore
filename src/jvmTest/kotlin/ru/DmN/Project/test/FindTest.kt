@@ -1,5 +1,6 @@
 package ru.DmN.Project.test
 
+import com.google.common.base.Stopwatch
 import org.junit.Test
 import ru.DmN.Project.core.obj.ObjType
 import ru.DmN.Project.core.obj.api.IFMP
@@ -37,6 +38,34 @@ class FindTest {
 
             assertEquals(find(o1, "TestObject2"), o2)
         }
+    }
+
+    @Test
+    fun find1T() {
+        val o1 = object : IObject, IFMP {
+            override val fields: IFMS<IObject> = IFMSImpl()
+            override val methods: IFMS<IVObject> = IFMSImpl()
+            override val name: String = "TestObject1"
+            override val type: ObjType = ObjType.NULL
+        }
+
+        val o2 = VObject("TestObject2", ObjType.NULL, null)
+
+        for (i in 0..100000) {
+            if (i == 99999)
+                o1.methods.add(o2)
+
+            o1.fields.add(Object("O$i", ObjType.NULL))
+            o1.fields.add(Object("O${i + 1023}", ObjType.NULL))
+        }
+
+        val sw = Stopwatch()
+        sw.start()
+
+        find(o1, "TestObject2")
+
+        sw.stop()
+        println(sw)
     }
 
     @Test

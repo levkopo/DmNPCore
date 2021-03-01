@@ -52,6 +52,9 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("commons-io:commons-io:2.4")
+
+                // https://mvnrepository.com/artifact/com.google.guava/guava
+                implementation("com.google.guava:guava:11.0.2")
             }
         }
         val jsMain by getting
