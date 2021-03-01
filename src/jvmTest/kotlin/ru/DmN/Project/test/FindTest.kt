@@ -9,9 +9,9 @@ import ru.DmN.Project.core.`object`.impl.AObject
 import ru.DmN.Project.core.`object`.impl.Object
 import ru.DmN.Project.core.`object`.impl.VObject
 import ru.DmN.Project.core.`object`.utils.find
-import ru.DmN.Project.core.data.api.IFMS
-import ru.DmN.Project.core.data.impl.IESImpl
-import ru.DmN.Project.core.data.impl.IFMSImpl
+import ru.DmN.Project.core.data.api.`object`.IFMS
+import ru.DmN.Project.core.data.impl.`object`.IESImpl
+import ru.DmN.Project.core.data.impl.`object`.IFMSImpl
 import kotlin.test.assertEquals
 
 class FindTest {

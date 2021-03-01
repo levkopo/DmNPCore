@@ -1,4 +1,4 @@
-package ru.DmN.Project.core.data.api
+package ru.DmN.Project.core.data.api.`object`
 
 import ru.DmN.Project.core.`object`.api.IObject
 

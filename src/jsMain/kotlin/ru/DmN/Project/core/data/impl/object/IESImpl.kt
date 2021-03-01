@@ -1,12 +1,11 @@
-package ru.DmN.Project.core.data.impl
+package ru.DmN.Project.core.data.impl.`object`
 
-import ru.DmN.Project.core.`object`.api.IObject
+import ru.DmN.Project.core.`object`.api.IDPO
 import ru.DmN.Project.core.`object`.utils.cast
 import ru.DmN.Project.core.`object`.utils.indexOfIO
-import ru.DmN.Project.core.data.api.IFMS
-import java.util.ArrayList
+import ru.DmN.Project.core.data.api.`object`.IES
 
-actual class IFMSImpl<T : IObject> : IFMS<T> {
+actual class IESImpl<T : IDPO> : IES<T> {
     private val instance = ArrayList<T>()
 
     // Fields impl
@@ -25,8 +24,15 @@ actual class IFMSImpl<T : IObject> : IFMS<T> {
         val i = instance.indexOfIO(name)
 
         return if (i > -1)
-            cast(this.removeAt(i))
+            cast(instance.removeAt(i))
         else null
     }
-    override fun removeAt(index: Int): T = cast(this.removeAt(index))
+    override fun removeAt(index: Int): T = cast(instance.removeAt(index))
+    // Iterator impl
+    override fun iterator(): Iterator<T> = object : Iterator<T> {
+        var i = 0
+
+        override fun hasNext(): Boolean = i < instance.size
+        override fun next(): T = instance[i++]
+    }
 }

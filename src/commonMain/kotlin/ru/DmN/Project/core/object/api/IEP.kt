@@ -1,6 +1,6 @@
 package ru.DmN.Project.core.`object`.api
 
-import ru.DmN.Project.core.data.api.IES
+import ru.DmN.Project.core.data.api.`object`.IES
 
 /**
  * Extends Provider

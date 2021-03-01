@@ -2,8 +2,8 @@ package ru.DmN.Project.core.`object`.impl
 
 import ru.DmN.Project.core.`object`.ObjType
 import ru.DmN.Project.core.`object`.api.*
-import ru.DmN.Project.core.data.api.IES
-import ru.DmN.Project.core.data.api.IFMS
+import ru.DmN.Project.core.data.api.`object`.IES
+import ru.DmN.Project.core.data.api.`object`.IFMS
 
 data class AVObject(
     override val extends: IES<IDPO>,

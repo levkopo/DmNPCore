@@ -1,8 +1,8 @@
-package ru.DmN.Project.core.data.impl
+package ru.DmN.Project.core.data.impl.`object`
 
 import ru.DmN.Project.core.`object`.api.IObject
 import ru.DmN.Project.core.`object`.utils.indexOfIO
-import ru.DmN.Project.core.data.api.IFMS
+import ru.DmN.Project.core.data.api.`object`.IFMS
 
 actual class IFMSImpl<T : IObject> : IFMS<T> {
     private val instance = ArrayList<T>()
