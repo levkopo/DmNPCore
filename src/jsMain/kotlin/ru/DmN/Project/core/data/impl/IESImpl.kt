@@ -5,25 +5,34 @@ import ru.DmN.Project.core.`object`.utils.cast
 import ru.DmN.Project.core.`object`.utils.indexOfIO
 import ru.DmN.Project.core.data.api.IES
 
-actual class IESImpl<T : IDPO> : ArrayList<IDPO>(), IES<T> {
+actual class IESImpl<T : IDPO> : IES<T> {
+    private val instance = ArrayList<T>()
+
     // Fields impl
     override val size: Int
-        get() = super.size
+        get() = instance.size
     // Adding impl
-    override fun add(obj: T) { super.add(obj) }
+    override fun add(obj: T) { instance.add(obj) }
     // Getting impl
-    override fun get(name: String): T? = cast(this.find { o -> o.name == name })
-    override fun get(index: Int): T = cast(super.get(index))
+    override fun get(name: String): T? = cast(instance.find { o -> o.name == name })
+    override fun get(index: Int): T = cast(instance.get(index))
     // Setting impl
-    override fun set(obj: T, name: String) { this[this.indexOfIO(name)] = obj }
-    override fun set(obj: T, index: Int) { this[index] = obj }
+    override fun set(obj: T, name: String) { instance[instance.indexOfIO(name)] = obj }
+    override fun set(obj: T, index: Int) { instance[index] = obj }
     // Removing impl
     override fun remove(name: String): T? {
-        val i = this.indexOfIO(name)
+        val i = instance.indexOfIO(name)
 
         return if (i > -1)
-            cast(super.removeAt(i))
+            cast(instance.removeAt(i))
         else null
     }
-    override fun removeAt(index: Int): T = cast(super.removeAt(index))
+    override fun removeAt(index: Int): T = cast(instance.removeAt(index))
+    // Iterator impl
+    override fun iterator(): Iterator<T> = object : Iterator<T> {
+        var i = 0
+
+        override fun hasNext(): Boolean = i < instance.size
+        override fun next(): T = instance[i++]
+    }
 }
