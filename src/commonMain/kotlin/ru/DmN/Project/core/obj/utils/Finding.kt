@@ -31,11 +31,11 @@ fun findWithType(obj: IObject, name: String): IObject? {
 }
 
 fun findEFM(obj: IObject, name: String): IObject? {
-    return if (obj is IFMP)
-        findFM(obj, name) ?: findE(obj, name)
-    else if (obj is IEP)
-        findE(obj, name)
-    else null
+    return when (obj) {
+        is IFMP -> findFM(obj, name) ?: findE(obj, name)
+        is IEP -> findE(obj, name)
+        else -> null
+    }
 }
 
 fun findFM(obj: IObject, name: String): IObject? {
