@@ -4,7 +4,7 @@ import ru.DmN.Project.core.obj.api.IObject
 import ru.DmN.Project.core.obj.utils.indexOfIO
 import ru.DmN.Project.core.data.api.obj.IFMS
 
-actual class IFMSImpl<T : IObject> : IFMS<T> {
+actual open class IFMSImpl<T : IObject> : IFMS<T> {
     private val instance = ArrayList<T>()
 
     // Fields impl

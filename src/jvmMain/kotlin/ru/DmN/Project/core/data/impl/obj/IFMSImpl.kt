@@ -6,7 +6,7 @@ import ru.DmN.Project.core.obj.utils.indexOfIO
 import ru.DmN.Project.core.data.api.obj.IFMS
 import java.util.ArrayList
 
-actual class IFMSImpl<T : IObject> : IFMS<T> {
+actual open class IFMSImpl<T : IObject> : IFMS<T> {
     private val instance = ArrayList<T>()
 
     // Fields impl
@@ -16,7 +16,7 @@ actual class IFMSImpl<T : IObject> : IFMS<T> {
     override fun add(obj: T) { instance.add(obj) }
     // Getting impl
     override fun get(name: String): T? = cast(instance.find { o -> o.name == name })
-    override fun get(index: Int): T = cast(instance.get(index))
+    override fun get(index: Int): T = cast(instance[index])
     // Setting impl
     override fun set(obj: T, name: String) { instance[instance.indexOfIO(name)] = obj }
     override fun set(obj: T, index: Int) { instance[index] = obj }

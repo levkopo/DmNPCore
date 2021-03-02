@@ -5,7 +5,7 @@ import ru.DmN.Project.core.obj.utils.cast
 import ru.DmN.Project.core.obj.utils.indexOfIO
 import ru.DmN.Project.core.data.api.obj.IFMS
 
-actual class IFMSImpl<T : IObject> : ArrayList<IObject>(), IFMS<T> {
+actual open class IFMSImpl<T : IObject> : ArrayList<IObject>(), IFMS<T> {
     // Fields impl
     override val size: Int
         get() = super.size
