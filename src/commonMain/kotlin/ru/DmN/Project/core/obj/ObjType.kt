@@ -1,17 +1,21 @@
 package ru.DmN.Project.core.obj
 
-enum class ObjType {
-    NULL,
+class FMObjType : ObjType()
 
-    VAL,
-    VAR,
-    REFERENCE,
+open class ObjType {
+    companion object {
+        val NULL = ObjType()
 
-    METHOD,
+        val VAL = ObjType()
+        val VAR = ObjType()
+        val REFERENCE = ObjType()
 
-    INTERFACE,
-    CLASS,
-    OBJECT,
+        val METHOD = FMObjType()
 
-    PACKAGE
+        val INTERFACE = FMObjType()
+        val CLASS = FMObjType()
+        val OBJECT = FMObjType()
+
+        val PACKAGE = ObjType()
+    }
 }

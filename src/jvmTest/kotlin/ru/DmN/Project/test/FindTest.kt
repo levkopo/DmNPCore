@@ -83,4 +83,24 @@ class FindTest {
             assertEquals((find(o2, "j") as IVObject).value, 21)
         }
     }
+
+    @Test
+    fun find2T() {
+        val o1 = AObject(IESImpl(), IFMSImpl(), IFMSImpl(), "Object_1", ObjType.OBJECT)
+        val o2 = AObject(IESImpl(), IFMSImpl(), IFMSImpl(), "Object_2", ObjType.OBJECT)
+
+        o1.fields.add(VObject("i", ObjType.VAL, 12))
+        o2.fields.add(VObject("j", ObjType.VAL, 21))
+
+        o2.extends.add(o1)
+
+        val sw = Stopwatch()
+        sw.start()
+
+        find(o2, "i")
+        find(o2, "j")
+
+        sw.stop()
+        println(sw)
+    }
 }
