@@ -10,15 +10,7 @@ import ru.DmN.Project.core.obj.impl.VObject
 
 inline fun <T> cast(o: Any?) = o as T
 
-inline fun find(obj: IObject, name: String): IObject? {
-    var result = findWithType(obj, name)
-
-    if (result == null)
-        result = findEFM(obj, name)
-
-    return result
-}
-
+fun find(obj: IObject, name: String): IObject? = findWithType(obj, name) ?: findEFM(obj, name)
 fun findWithType(obj: IObject, name: String): IObject? {
     val type = obj.type
 
@@ -39,15 +31,11 @@ fun findWithType(obj: IObject, name: String): IObject? {
 }
 
 fun findEFM(obj: IObject, name: String): IObject? {
-    var result: IObject? = null
-
-    if (obj is IFMP)
-        result = findFM(obj, name)
-
-    if (result == null && obj is IEP)
-        result = findE(obj, name)
-
-    return result
+    return if (obj is IFMP)
+        findFM(obj, name) ?: findE(obj, name)
+    else if (obj is IEP)
+        findE(obj, name)
+    else null
 }
 
 fun findFM(obj: IObject, name: String): IObject? {
