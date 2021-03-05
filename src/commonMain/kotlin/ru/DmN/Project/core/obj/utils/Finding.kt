@@ -11,6 +11,7 @@ import ru.DmN.Project.core.obj.impl.VObject
 inline fun <T> cast(o: Any?) = o as T
 
 fun find(obj: IObject, name: String): IObject? = findWithType(obj, name) ?: findEFM(obj, name)
+
 fun findWithType(obj: IObject, name: String): IObject? {
     val type = obj.type
 

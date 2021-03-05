@@ -89,7 +89,6 @@ class FindTest {
     @Test
     fun find2T() {
         val o1 = AObject(IESImpl(), IFMSImpl(), IFMSImpl(), "Object_1", ObjType.OBJECT)
-//        val o2 = AObject(IESImpl(), IFMSImpl(), IFMSImpl(), "Object_2", ObjType.OBJECT)
         val o2 = AObject(IESImpl(), IFMSF(), IFMSF(), "Object_2", ObjType.OBJECT)
         (o2.fields as IFMSF).instance = o2
         (o2.methods as IFMSF).instance = o2
@@ -102,22 +101,22 @@ class FindTest {
         val sw = Stopwatch()
         sw.start()
 
-        o2.fields["i"] // 955,2 ?s; 807,9 ?s; 802,1 ?s
+        o2.fields["i"]
         o2.fields["j"]
 
-//        println(o2.fields["i"]) // 2,165 ms; 2,131 ms; 2,169 ms
+//        println(o2.fields["i"])
 //        println(o2.fields["j"])
 
-//        find(o2, "i") // 950,2 ?s; 881,3 ?s; 903,3 ?s
+//        find(o2, "i")
 //        find(o2, "j")
 
-//        println(find(o2, "i")) // 2,255 ms; 2,267 ms; 2,329 ms
+//        println(find(o2, "i"))
 //        println(find(o2, "j"))
 
-//        o2.fields["j"] // 23,40 ?s; 24,70 ?s; 22,10 ?s
+//        o2.fields["j"]
 //        (o2.extends[0] as IFMP).fields["i"]
 
-//        println(o2.fields["j"]) // 1,412 ms; 1,393 ms; 1,398 ms
+//        println(o2.fields["j"])
 //        println((o2.extends[0] as IFMP).fields["i"])
 
         sw.stop()
