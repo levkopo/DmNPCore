@@ -6,7 +6,6 @@ import ru.DmN.Project.core.obj.api.IEP
 import ru.DmN.Project.core.obj.api.IFMP
 import ru.DmN.Project.core.obj.api.IObject
 import ru.DmN.Project.core.obj.api.IVObject
-import ru.DmN.Project.core.obj.impl.VObject
 
 inline fun <T> cast(o: Any?) = o as T
 
@@ -21,7 +20,7 @@ fun findWithType(obj: IObject, name: String): IObject? {
         when (type) {
             ObjType.REFERENCE -> findWithType((obj as IVObject).value as IObject, name)
             ObjType.PACKAGE -> {
-                for (e in cast<ArrayList<IObject>>((obj as VObject).value))
+                for (e in cast<ArrayList<IObject>>((obj as IVObject).value))
                     if (e.name == name)
                         return e
                 null
@@ -84,7 +83,7 @@ fun findFieldWithType(obj: IObject, name: String): IObject? {
         when (type) {
             ObjType.REFERENCE -> findFieldWithType((obj as IVObject).value as IObject, name)
             ObjType.PACKAGE -> {
-                for (e in cast<ArrayList<IObject>>((obj as VObject).value))
+                for (e in cast<ArrayList<IObject>>((obj as IVObject).value))
                     if (e.name == name)
                         return e
                 null
@@ -147,7 +146,7 @@ fun findMethodWithType(obj: IObject, name: String): IObject? {
         when (type) {
             ObjType.REFERENCE -> findMethodWithType((obj as IVObject).value as IObject, name)
             ObjType.PACKAGE -> {
-                for (e in cast<ArrayList<IObject>>((obj as VObject).value))
+                for (e in cast<ArrayList<IObject>>((obj as IVObject).value))
                     if (e.name == name)
                         return e
                 null
