@@ -1,4 +1,4 @@
-package ru.DmN.Project.core.vm.api.base
+package ru.DmN.Project.core.vm.api
 
 import ru.DmN.Project.core.obj.api.IEP
 import ru.DmN.Project.core.obj.api.IFMP
