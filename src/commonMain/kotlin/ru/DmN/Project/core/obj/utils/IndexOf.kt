@@ -1,6 +1,6 @@
 package ru.DmN.Project.core.obj.utils
 
-import ru.DmN.Project.core.obj.api.IObject
+import ru.DmN.Project.core.obj.IObject
 
 fun List<IObject>.indexOfIO(name: String): Int {
     for (i in this.indices)

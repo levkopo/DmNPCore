@@ -1,9 +1,9 @@
 package ru.DmN.Project.core.data.impl.obj
 
-import ru.DmN.Project.core.obj.api.IObject
+import ru.DmN.Project.core.obj.IObject
 import ru.DmN.Project.core.obj.utils.cast
 import ru.DmN.Project.core.obj.utils.indexOfIO
-import ru.DmN.Project.core.data.api.obj.IFMS
+import ru.DmN.Project.core.data.obj.IFMS
 
 actual open class IFMSImpl<T : IObject> : ArrayList<IObject>(), IFMS<T> {
     // Fields impl

@@ -1,9 +1,9 @@
 package ru.DmN.Project.core.data.impl.obj
 
-import ru.DmN.Project.core.obj.api.IDPO
+import ru.DmN.Project.core.obj.IDPO
 import ru.DmN.Project.core.obj.utils.cast
 import ru.DmN.Project.core.obj.utils.indexOfIO
-import ru.DmN.Project.core.data.api.obj.IES
+import ru.DmN.Project.core.data.obj.IES
 
 actual class IESImpl<T : IDPO> : IES<T> {
     private val instance = ArrayList<T>()

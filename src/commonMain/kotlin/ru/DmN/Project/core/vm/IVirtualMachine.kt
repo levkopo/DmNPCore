@@ -1,4 +1,4 @@
-package ru.DmN.Project.core.vm.api
+package ru.DmN.Project.core.vm
 
 interface IVirtualMachine<T> {
     fun init()

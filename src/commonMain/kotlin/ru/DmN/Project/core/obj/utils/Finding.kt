@@ -2,10 +2,10 @@ package ru.DmN.Project.core.obj.utils
 
 import ru.DmN.Project.core.obj.FMObjType
 import ru.DmN.Project.core.obj.ObjType
-import ru.DmN.Project.core.obj.api.IEP
-import ru.DmN.Project.core.obj.api.IFMP
-import ru.DmN.Project.core.obj.api.IObject
-import ru.DmN.Project.core.obj.api.IVObject
+import ru.DmN.Project.core.obj.IEP
+import ru.DmN.Project.core.obj.IFMP
+import ru.DmN.Project.core.obj.IObject
+import ru.DmN.Project.core.obj.IVObject
 
 inline fun <T> cast(o: Any?) = o as T
 

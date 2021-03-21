@@ -1,6 +1,6 @@
-package ru.DmN.Project.core.data.api.obj
+package ru.DmN.Project.core.data.obj
 
-import ru.DmN.Project.core.obj.api.IDPO
+import ru.DmN.Project.core.obj.IDPO
 
 /**
  * Extends Storage

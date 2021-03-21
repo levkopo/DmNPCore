@@ -1,6 +1,6 @@
-package ru.DmN.Project.core.obj.api
+package ru.DmN.Project.core.obj
 
-import ru.DmN.Project.core.data.api.obj.IFMS
+import ru.DmN.Project.core.data.obj.IFMS
 
 /**
  * Fields Methods Provider

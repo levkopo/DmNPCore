@@ -1,4 +1,4 @@
-package ru.DmN.Project.core.obj.api
+package ru.DmN.Project.core.obj
 
 import ru.DmN.Project.core.obj.ObjType
 
