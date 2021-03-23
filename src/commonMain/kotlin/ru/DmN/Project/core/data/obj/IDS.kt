@@ -3,9 +3,9 @@ package ru.DmN.Project.core.data.obj
 import ru.DmN.Project.core.obj.IObject
 
 /**
- * Field Method Storage
+ * Defs Storage
  */
-interface IFMS<T : IObject> {
+interface IDS<T : IObject> {
     // Fields
     val autoFinding: Boolean
         get() = false

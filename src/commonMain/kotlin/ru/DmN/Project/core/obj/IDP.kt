@@ -1,6 +1,10 @@
 package ru.DmN.Project.core.obj
 
+import ru.DmN.Project.core.data.obj.IDS
+
 /**
- * Data Provider
+ * Defs Provider
  */
-interface IDP
+interface IDP : DP {
+    val fields: IDS<IObject>
+}
