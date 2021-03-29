@@ -1,4 +1,5 @@
 plugins {
+    id("maven-publish")
     kotlin("multiplatform") version "1.4.30"
 }
 
